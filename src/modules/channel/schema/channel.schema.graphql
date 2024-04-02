@@ -1,0 +1,18 @@
+type Channel {
+  id: ID!
+  name: String!
+  description: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  getAllChannels: [Channel!]!
+}
+
+type Mutation {
+  deleteChannel: Int
+  createChannel(name: String!): Channel
+}
+
+scalar DateTime
