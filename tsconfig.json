@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
+    "noImplicitAny": true,
     "removeComments": true,
+    "noLib": false,
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "ES2022",
     "sourceMap": true,
+    "allowJs": true,
     "outDir": "./dist",
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
     "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*", "auto.migrate.ts"],
+  "exclude": ["node_modules"]
 }
