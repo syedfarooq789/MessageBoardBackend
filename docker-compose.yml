@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:6
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-volume:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+
+  app:
+    depends_on:
+      redis:
+        condition: service_healthy
+    build: ./
+    restart: always
+    environment:
+      DB_HOST: host.docker.internal
+    entrypoint: docker/run-application.sh
+    ports:
+      - '4000:4000'
+
+volumes:
+  redis-volume:
