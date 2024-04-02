@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ChannelInitializationService } from './channel.init.service';
-import { ConfigModule } from '@nestjs/config';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ConfigModule } from '@nestjs/config';
+import { ChannelModule } from './channel/channel.module';
+import { MessageModule } from './message/message.module';
 import { CommonModule } from './common';
+import { ChannelInitializationService } from './channel.init.service';
 import { DatabaseModule } from './database';
 
 @Module({
@@ -16,6 +18,8 @@ import { DatabaseModule } from './database';
       playground: true,
       typePaths: ['./**/*.graphql'],
     }),
+    ChannelModule,
+    MessageModule,
     CommonModule,
     DatabaseModule,
   ],
